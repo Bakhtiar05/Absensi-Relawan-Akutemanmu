@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akutemanmu</title>
+    <!-- Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons untuk ikon -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Google (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Animasi sederhana saat halaman dimuat */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+    </style>
+</head>
+
+<body
+    class="relative min-h-screen text-slate-800 flex justify-center items-start pt-8 pb-12 px-4 sm:items-center sm:pt-4">
+
+    <!-- Background Image dari Header dengan Overlay -->
+    <div
+        class="fixed inset-0 z-[-2] bg-slate-200 bg-[url('headerformabsen.jpg')] bg-cover bg-center bg-no-repeat opacity-40">
+    </div>
+    <div class="fixed inset-0 z-[-1] bg-gradient-to-b from-blue-50/90 to-white/95 backdrop-blur-sm"></div>
+
+    <!-- Kontainer Utama bergaya Kartu (Card) -->
+    <div
+        class="w-full max-w-md mx-auto bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white animate-fade-in">
+
+        <!-- Banner Image di atas dengan Fallback Desain -->
+        <div
+            class="relative w-full aspect-[10/3] bg-slate-100 border-b border-gray-100 flex items-center justify-center overflow-hidden">
+
+            <!-- Tampilan Pengganti (Fallback) jika gambar lokal tidak termuat di Preview -->
+            <div id="fallback-banner"
+                class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-r from-gray-50 via-slate-100 to-gray-50">
+                <!-- Ornamen Abstrak -->
+                <div class="absolute top-1 left-4 text-cyan-300 opacity-60"><i data-lucide="flower-2"
+                        class="w-8 h-8"></i></div>
+                <div class="absolute bottom-1 right-6 text-cyan-400 opacity-60"><i data-lucide="flower-2"
+                        class="w-10 h-10"></i></div>
+
+                <!-- Teks Banner -->
+                <div class="text-center z-10 flex items-center gap-1 sm:gap-2">
+                    <span class="text-4xl sm:text-5xl font-extrabold text-cyan-400">#</span>
+                    <div class="flex flex-col text-left leading-[1.1]">
+                        <span class="text-xl sm:text-2xl font-extrabold text-white"
+                            style="-webkit-text-stroke: 1.5px #38bdf8; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">TemanBaik</span>
+                        <span class="text-xl sm:text-2xl font-extrabold text-white"
+                            style="-webkit-text-stroke: 1.5px #0284c7; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">SalingMembantu</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gambar Asli (Akan menutupi fallback jika berhasil dimuat) -->
+            <img src="image/headerformabsen.png" alt="Header Akutemanmu"
+                class="absolute inset-0 w-full h-full object-cover z-10"
+                onerror="this.style.opacity='0'; this.style.pointerEvents='none';"
+                onload="this.style.position='relative'; document.getElementById('fallback-banner').style.display='none';">
+        </div>
+
+        <div class="p-6 sm:p-8 flex flex-col items-center">
+
+            <!-- Judul & Deskripsi -->
+            <h1 class="text-xl font-bold text-sky-900 mb-2 text-center tracking-tight">Portal Absensi Relawan</h1>
+            <p class="text-slate-500 text-sm text-center mb-8 font-medium">
+                Silakan pilih formulir absensi sesuai dengan kegiatan Kamu hari ini.
+            </p>
+
+            <!-- Daftar Tautan (3 Link Absensi) -->
+            <div class="flex flex-col gap-4 w-full">
+
+                <!-- Tautan 1: Luring -->
+                <a href="https://forms.gle/XM74vcRs47K2Kxc78" target="_blank" rel="noopener noreferrer"
+                    class="group flex items-center w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-100 opacity-0">
+                    <div
+                        class="bg-sky-100 text-sky-600 p-2.5 rounded-xl mr-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                    </div>
+                    <span
+                        class="font-semibold text-slate-700 group-hover:text-sky-900 text-sm text-left leading-tight">Absensi
+                        Kegiatan/Event Offline</span>
+                </a>
+
+                <!-- Tautan 2: Kunjungan Rumah -->
+                <a href="https://forms.gle/8xpcvb2un62Ud8QPA" target="_blank" rel="noopener noreferrer"
+                    class="group flex items-center w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-200 opacity-0">
+                    <div
+                        class="bg-sky-100 text-sky-600 p-2.5 rounded-xl mr-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                    </div>
+                    <span
+                        class="font-semibold text-slate-700 group-hover:text-sky-900 text-sm text-left leading-tight">Absensi
+                        Kunjungan Rumah Konseling</span>
+                </a>
+
+                <!-- Tautan 3: Daring -->
+                <a href="https://forms.gle/APC8gKwt1A4RgfA6A" target="_blank" rel="noopener noreferrer"
+                    class="group flex items-center w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-300 opacity-0">
+                    <div
+                        class="bg-sky-100 text-sky-600 p-2.5 rounded-xl mr-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                        <i data-lucide="video" class="w-5 h-5"></i>
+                    </div>
+                    <span
+                        class="font-semibold text-slate-700 group-hover:text-sky-900 text-sm text-left leading-tight">Absensi
+                        Kegiatan/Event Online</span>
+                </a>
+
+            </div>
+
+            <!-- Ikon Sosial Media Tambahan di Bawah -->
+            <div
+                class="flex justify-center gap-5 mt-8 pt-6 border-t border-slate-100 w-full animate-fade-in delay-300 opacity-0">
+                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
+                    title="@akuteman_mu">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
+                    title="TikTok @akuteman_mu">
+                    <i data-lucide="music-2" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
+                    title="X @Akuteman_muu">
+                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
+                    title="Facebook Aku Temanmu">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script untuk menjalankan ikon -->
+    <script>
+        // Inisialisasi ikon dari Lucide
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
