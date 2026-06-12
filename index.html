@@ -4,210 +4,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akutemanmu</title>
+    <title>Portal Absensi Relawan — Akutemanmu</title>
+    <meta name="description"
+        content="Portal absensi digital untuk relawan Akutemanmu. Isi kehadiran kegiatan offline, kunjungan rumah konseling, dan event online.">
     <link rel="icon" type="image/png" href="image/logoabsen.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Warna dasar latar belakang (sangat terang/putih kebiruan) */
-            background-color: #f8fafc;
-            /* Pola Titik-titik menggunakan radial-gradient */
-            background-image: radial-gradient(rgba(14, 165, 233, 0.15) 2px, transparent 2px);
-            background-size: 24px 24px;
-        }
+    <!-- Font Awesome 6 — Official Brand Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        /* Animasi sederhana saat halaman dimuat */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        .delay-100 {
-            animation-delay: 100ms;
-        }
-
-        .delay-200 {
-            animation-delay: 200ms;
-        }
-
-        .delay-300 {
-            animation-delay: 300ms;
-        }
-    </style>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="relative min-h-screen text-slate-800 flex justify-center items-center py-12 px-4">
+<body>
 
-    <div
-        class="w-full max-w-md mx-auto bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-white animate-fade-in">
+    <!-- Floating background shapes -->
+    <div class="bg-shapes" aria-hidden="true">
+        <div class="bg-shape bg-shape--1"></div>
+        <div class="bg-shape bg-shape--2"></div>
+        <div class="bg-shape bg-shape--3"></div>
+        <div class="bg-shape bg-shape--4"></div>
+    </div>
 
-        <div
-            class="relative w-full aspect-[10/3] bg-slate-100 border-b border-gray-100 flex items-center justify-center overflow-hidden">
+    <div class="app-container">
 
-            <div id="fallback-banner"
-                class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-r from-gray-50 via-slate-100 to-gray-50">
-                <div class="absolute top-1 left-4 text-cyan-300 opacity-60"><i data-lucide="flower-2"
-                        class="w-8 h-8"></i></div>
-                <div class="absolute bottom-1 right-6 text-cyan-400 opacity-60"><i data-lucide="flower-2"
-                        class="w-10 h-10"></i></div>
+        <!-- ====== Hero Header ====== -->
+        <header class="hero anim-fade anim-delay-1" id="hero-header">
+            <!-- Decorative shapes -->
+            <div class="hero__shape hero__shape--1" aria-hidden="true"></div>
+            <div class="hero__shape hero__shape--2" aria-hidden="true"></div>
+            <div class="hero__shape hero__shape--3" aria-hidden="true"></div>
 
-                <div class="text-center z-10 flex items-center gap-1 sm:gap-2">
-                    <span class="text-4xl sm:text-5xl font-extrabold text-cyan-400">#</span>
-                    <div class="flex flex-col text-left leading-[1.1]">
-                        <span class="text-xl sm:text-2xl font-extrabold text-white"
-                            style="-webkit-text-stroke: 1.5px #38bdf8; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">TemanBaik</span>
-                        <span class="text-xl sm:text-2xl font-extrabold text-white"
-                            style="-webkit-text-stroke: 1.5px #0284c7; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">SalingMembantu</span>
-                    </div>
+            <div class="hero__glass">
+                <div class="hero__logo-wrap">
+                    <img src="image/logoabsen.png" alt="Logo Akutemanmu" class="hero__logo"
+                        onerror="this.src='https://ui-avatars.com/api/?name=Aku+Temanmu&background=3BA7F0&color=fff&size=128&rounded=true'">
                 </div>
-            </div>
 
-            <img src="image/headerformabsen.png" alt="Header Akutemanmu"
-                class="absolute inset-0 w-full h-full object-cover z-10"
-                onerror="this.style.opacity='0'; this.style.pointerEvents='none';"
-                onload="this.style.position='relative'; document.getElementById('fallback-banner').style.display='none';">
-        </div>
+                <h1 class="hero__title">Portal Absensi Relawan</h1>
+                <p class="hero__subtitle">Akutemanmu</p>
 
-        <div class="relative p-6 sm:p-8 flex flex-col items-center pt-12 sm:pt-14">
-
-            <div
-                class="w-20 h-20 -mt-4 mb-8 bg-white rounded-full shadow-md border border-slate-100 flex items-center justify-center overflow-hidden z-20">
-                <img src="image/logoabsen.png" alt="Logo AkuTemanmu" class="w-3/4 h-3/4 object-contain"
-                    onerror="this.src='https://ui-avatars.com/api/?name=Aku+Temanmu&background=0284c7&color=fff'">
-            </div>
-
-            <h1 class="mt-16 text-xl font-bold text-sky-900 mb-2 text-center tracking-tight">Portal Absensi Relawan</h1>
-            <p class="text-slate-500 text-sm text-center mb-8 font-medium">
-                Silakan pilih formulir absensi sesuai dengan kegiatan Kamu hari ini.
-            </p>
-
-            <!-- Area Buka: Menampilkan Tombol Form (Akan disembunyikan jam 22:00) -->
-            <div id="area-buka" class="flex flex-col gap-4 w-full">
-
-                <a href="https://forms.gle/XM74vcRs47K2Kxc78" target="_blank" rel="noopener noreferrer"
-                    class="group flex items-center justify-between w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-100 opacity-0 cursor-pointer">
-                    <div class="flex items-center">
-                        <div
-                            class="bg-sky-100 text-sky-600 p-2.5 rounded-xl mr-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
-                            <i data-lucide="users" class="w-5 h-5"></i>
-                        </div>
-                        <span
-                            class="font-semibold text-slate-700 group-hover:text-sky-900 text-sm text-left leading-tight">Absensi
-                            Kegiatan/Event Offline</span>
-                    </div>
-                    <i data-lucide="chevron-right"
-                        class="text-sky-300 group-hover:text-sky-600 transition-colors w-5 h-5 flex-shrink-0 ml-2"></i>
-                </a>
-
-                <a href="https://forms.gle/8xpcvb2un62Ud8QPA" target="_blank" rel="noopener noreferrer"
-                    class="group flex items-center justify-between w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-200 opacity-0 cursor-pointer">
-                    <div class="flex items-center">
-                        <div
-                            class="bg-sky-100 text-sky-600 p-2.5 rounded-xl mr-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
-                            <i data-lucide="home" class="w-5 h-5"></i>
-                        </div>
-                        <span
-                            class="font-semibold text-slate-700 group-hover:text-sky-900 text-sm text-left leading-tight">Absensi
-                            Kunjungan Rumah Konseling</span>
-                    </div>
-                    <i data-lucide="chevron-right"
-                        class="text-sky-300 group-hover:text-sky-600 transition-colors w-5 h-5 flex-shrink-0 ml-2"></i>
-                </a>
-
-                <a href="https://forms.gle/APC8gKwt1A4RgfA6A" target="_blank" rel="noopener noreferrer"
-                    class="group flex items-center justify-between w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-300 opacity-0 cursor-pointer">
-                    <div class="flex items-center">
-                        <div
-                            class="bg-sky-100 text-sky-600 p-2.5 rounded-xl mr-4 group-hover:bg-sky-500 group-hover:text-white transition-colors">
-                            <i data-lucide="video" class="w-5 h-5"></i>
-                        </div>
-                        <span
-                            class="font-semibold text-slate-700 group-hover:text-sky-900 text-sm text-left leading-tight">Absensi
-                            Kegiatan/Event Online</span>
-                    </div>
-                    <i data-lucide="chevron-right"
-                        class="text-sky-300 group-hover:text-sky-600 transition-colors w-5 h-5 flex-shrink-0 ml-2"></i>
-                </a>
-
-            </div>
-
-            <!-- Area Tutup: Menampilkan Pesan Merah (Akan muncul jam 22:00) -->
-            <div id="pesan-tutup"
-                class="hidden flex-col items-center w-full p-6 bg-red-50 border-2 border-red-100 rounded-2xl animate-fade-in delay-100">
-                <div class="bg-red-100 text-red-500 p-3 rounded-full mb-3">
-                    <i data-lucide="lock" class="w-6 h-6"></i>
+                <div class="hero__datetime" id="datetime-display">
+                    <i data-lucide="calendar-clock"></i>
+                    <span id="datetime-text">Memuat...</span>
                 </div>
-                <h3 class="text-lg font-bold text-red-800 mb-2 text-center">Pintu Absensi Ditutup</h3>
-                <p class="text-sm text-red-600 text-center font-medium leading-relaxed">
-                    Batas waktu pengisian kehadiran hari ini (22:00 WIB) telah habis. Portal akan dibuka kembali esok
-                    hari.
+
+                <p class="hero__motivational" id="motivational-text">
+                    "Setiap kehadiran Kamu adalah langkah kecil yang berarti besar bagi sesama."
                 </p>
             </div>
+        </header>
 
-            <div
-                class="flex justify-center gap-5 mt-8 pt-6 border-t border-slate-100 w-full animate-fade-in delay-300 opacity-0">
-                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
-                    title="@akuteman_mu">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                </a>
-                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
-                    title="TikTok @akuteman_mu">
-                    <i data-lucide="music-2" class="w-5 h-5"></i>
-                </a>
-                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
-                    title="X @Akuteman_muu">
-                    <i data-lucide="twitter" class="w-5 h-5"></i>
-                </a>
-                <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
-                    title="Facebook Aku Temanmu">
-                    <i data-lucide="facebook" class="w-5 h-5"></i>
-                </a>
+        <!-- ====== System Status ====== -->
+        <div class="system-status anim-fade-up anim-delay-2" style="margin-top: 20px;" id="system-status">
+            <span class="system-status__dot"></span>
+            <span>Sistem berjalan normal — Portal terbuka</span>
+        </div>
+
+        <!-- ====== Statistics ====== -->
+        <div class="section-label anim-fade-up anim-delay-3">
+            <span>Statistik Hari Ini</span>
+            <div class="section-label__line"></div>
+        </div>
+
+        <div class="stats-grid anim-fade-up anim-delay-3">
+            <div class="stat-card">
+                <div class="stat-card__icon stat-card__icon--blue">
+                    <i data-lucide="heart-handshake"></i>
+                </div>
+                <div class="stat-card__number">60+</div>
+                <div class="stat-card__label">Relawan</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card__icon stat-card__icon--green">
+                    <i data-lucide="calendar-check"></i>
+                </div>
+                <div class="stat-card__number">3</div>
+                <div class="stat-card__label">Kegiatan Hari Ini</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card__icon stat-card__icon--purple">
+                    <i data-lucide="sparkles"></i>
+                </div>
+                <div class="stat-card__number">12</div>
+                <div class="stat-card__label">Program Aktif</div>
             </div>
         </div>
+
+        <!-- ====== Attendance Menu ====== -->
+        <div class="section-label anim-fade-up anim-delay-4">
+            <span>Formulir Absensi</span>
+            <div class="section-label__line"></div>
+        </div>
+
+        <!-- Open state: attendance cards -->
+        <div id="area-buka">
+            <a href="https://forms.gle/XM74vcRs47K2Kxc78" target="_blank" rel="noopener noreferrer"
+                class="attendance-card anim-fade-up anim-delay-4" id="card-offline">
+                <div class="attendance-card__icon attendance-card__icon--offline">
+                    <i data-lucide="users"></i>
+                </div>
+                <div class="attendance-card__content">
+                    <div class="attendance-card__title">Absensi Kegiatan/Event Offline</div>
+                    <div class="attendance-card__desc">Catat kehadiran untuk kegiatan tatap muka</div>
+                </div>
+                <div class="attendance-card__arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="https://forms.gle/8xpcvb2un62Ud8QPA" target="_blank" rel="noopener noreferrer"
+                class="attendance-card anim-fade-up anim-delay-5" id="card-konseling">
+                <div class="attendance-card__icon attendance-card__icon--konseling">
+                    <i data-lucide="home"></i>
+                </div>
+                <div class="attendance-card__content">
+                    <div class="attendance-card__title">Absensi Kunjungan Rumah Konseling</div>
+                    <div class="attendance-card__desc">Catat kehadiran kunjungan Rumah Konseling</div>
+                </div>
+                <div class="attendance-card__arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="https://forms.gle/APC8gKwt1A4RgfA6A" target="_blank" rel="noopener noreferrer"
+                class="attendance-card anim-fade-up anim-delay-6" id="card-online">
+                <div class="attendance-card__icon attendance-card__icon--online">
+                    <i data-lucide="video"></i>
+                </div>
+                <div class="attendance-card__content">
+                    <div class="attendance-card__title">Absensi Kegiatan/Event Online</div>
+                    <div class="attendance-card__desc">Catat kehadiran untuk kegiatan daring</div>
+                </div>
+                <div class="attendance-card__arrow">
+                    <i data-lucide="arrow-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <!-- Closed state -->
+        <div id="pesan-tutup" class="closed-card anim-fade-up anim-delay-4">
+            <div class="closed-card__icon">
+                <i data-lucide="lock"></i>
+            </div>
+            <h3 class="closed-card__title">Pintu Absensi Ditutup</h3>
+            <p class="closed-card__text">
+                Batas waktu pengisian kehadiran hari ini (22:00 WIB) telah habis. Portal akan dibuka kembali esok hari.
+            </p>
+        </div>
+
+        <!-- ====== Announcement ====== -->
+        <div class="section-label anim-fade-up anim-delay-7">
+            <span>Pengumuman</span>
+            <div class="section-label__line"></div>
+        </div>
+
+        <div class="announcement-card anim-fade-up anim-delay-7">
+            <div class="announcement-card__header">
+                <span class="announcement-card__badge">
+                    <i data-lucide="megaphone"></i>
+                    Terbaru
+                </span>
+            </div>
+            <div class="announcement-card__title">Selamat Datang Relawan!</div>
+            <p class="announcement-card__text">
+                Terima kasih telah bergabung bersama Akutemanmu. Pastikan Kamu mengisi absensi setiap kegiatan yang
+                diikuti sebelum pukul 22:00 WIB.
+            </p>
+            <div class="announcement-card__time">
+                <i data-lucide="clock"></i>
+                <span id="announcement-date">Diperbarui hari ini</span>
+            </div>
+        </div>
+
+        <!-- ====== Quick Help Button ====== -->
+        <div class="section-label anim-fade-up anim-delay-8">
+            <span>Bantuan</span>
+            <div class="section-label__line"></div>
+        </div>
+
+        <a href="https://wa.me/6281317116911" target="_blank" rel="noopener noreferrer"
+            class="help-btn anim-fade-up anim-delay-8" id="btn-bantuan">
+            <i class="fa-brands fa-whatsapp" style="font-size: 18px;"></i>
+            Butuh Bantuan? Hubungi Admin via WhatsApp
+        </a>
+
+        <!-- ====== Contact Info ====== -->
+        <div class="section-label anim-fade-up anim-delay-9">
+            <span>Informasi Kontak</span>
+            <div class="section-label__line"></div>
+        </div>
+
+        <div class="contact-card anim-fade-up anim-delay-9">
+            <div class="contact-item">
+                <div class="contact-item__icon">
+                    <i data-lucide="mail"></i>
+                </div>
+                <div>
+                    <div class="contact-item__label">Email</div>
+                    <div class="contact-item__value">info@akutemanmu.org</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item__icon">
+                    <i data-lucide="phone"></i>
+                </div>
+                <div>
+                    <div class="contact-item__label">Telepon</div>
+                    <div class="contact-item__value">+62 851-7531-0723</div>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item__icon">
+                    <i data-lucide="map-pin"></i>
+                </div>
+                <div>
+                    <div class="contact-item__label">Alamat</div>
+                    <div class="contact-item__value">Serang, Banten</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== Footer ====== -->
+        <footer class="footer anim-fade-up anim-delay-10">
+            <img src="image/logoabsen.png" alt="Logo Akutemanmu" class="footer__logo"
+                onerror="this.style.display='none'">
+
+            <div class="footer__org-name">Akutemanmu</div>
+            <div class="footer__tagline">#TemanBaik #SalingMembantu</div>
+
+            <!-- Social Media — Pill Buttons with Brand Icons -->
+            <div class="social-pills">
+                <a href="https://instagram.com/akuteman_mu" target="_blank" rel="noopener noreferrer"
+                    class="social-pill social-pill--instagram" aria-label="Instagram @akuteman_mu">
+                    <i class="fa-brands fa-instagram social-pill__icon"></i>
+                    <span class="social-pill__user">@akuteman_mu</span>
+                </a>
+                <a href="https://tiktok.com/@akuteman_mu" target="_blank" rel="noopener noreferrer"
+                    class="social-pill social-pill--tiktok" aria-label="TikTok @akuteman_mu">
+                    <i class="fa-brands fa-tiktok social-pill__icon"></i>
+                    <span class="social-pill__user">@akuteman_mu</span>
+                </a>
+                <a href="https://x.com/Akuteman_muu" target="_blank" rel="noopener noreferrer"
+                    class="social-pill social-pill--x" aria-label="X @Akuteman_muu">
+                    <i class="fa-brands fa-x-twitter social-pill__icon"></i>
+                    <span class="social-pill__user">@Akuteman_muu</span>
+                </a>
+                <a href="https://facebook.com/akutemanmu" target="_blank" rel="noopener noreferrer"
+                    class="social-pill social-pill--facebook" aria-label="Facebook Aku Temanmu">
+                    <i class="fa-brands fa-facebook-f social-pill__icon"></i>
+                    <span class="social-pill__user">Aku Temanmu</span>
+                </a>
+            </div>
+
+            <div class="footer__divider"></div>
+
+            <div class="footer__contact-line">
+                <i data-lucide="mail"></i>
+                info@akutemanmu.org
+            </div>
+            <div class="footer__contact-line">
+                <i data-lucide="phone"></i>
+                +62 851-7531-0723
+            </div>
+
+            <div class="footer__copyright">
+                &copy; <span id="year-text">2026</span>Akutemanmu. Hak cipta dilindungi.
+            </div>
+            <div class="footer__version">Versi 2.0.0</div>
+        </footer>
 
     </div>
 
     <script>
-        // Inisialisasi ikon dari Lucide
+        // Initialize Lucide icons
         lucide.createIcons();
 
-        // Fungsi Pintu Otomatis
+        // ---- Date/Time Display ----
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const tanggal = now.toLocaleDateString('id-ID', options);
+            const jam = now.toLocaleTimeString('id-ID', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            const el = document.getElementById('datetime-text');
+            if (el) {
+                el.textContent = `${tanggal} • ${jam}`;
+            }
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // ---- Year in footer ----
+        document.getElementById('year-text').textContent = new Date().getFullYear();
+
+        // ---- Announcement date ----
+        (function () {
+            const now = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const formatted = now.toLocaleDateString('id-ID', options);
+            const el = document.getElementById('announcement-date');
+            if (el) el.textContent = `Diperbarui ${formatted}`;
+        })();
+
+        // ---- Automatic Door (Time Lock) ----
         function cekWaktuOtomatis() {
             const waktuSekarang = new Date();
             const jam = waktuSekarang.getHours();
 
-            // Logika: Jika jam 22 (10 malam) atau lebih
             if (jam >= 22) {
                 const areaBuka = document.getElementById('area-buka');
                 const pesanTutup = document.getElementById('pesan-tutup');
+                const systemStatus = document.getElementById('system-status');
 
-                // Sembunyikan daftar form
-                areaBuka.classList.remove('flex');
+                // Hide attendance cards
                 areaBuka.classList.add('hidden');
 
-                // Tampilkan pesan penutupan
-                pesanTutup.classList.remove('hidden');
-                pesanTutup.classList.add('flex');
+                // Show closed message
+                pesanTutup.classList.add('is-active');
+
+                // Update system status
+                if (systemStatus) {
+                    systemStatus.innerHTML = `
+                        <span class="system-status__dot" style="background: var(--error); animation: none;"></span>
+                        <span>Portal absensi ditutup — Buka kembali besok</span>
+                    `;
+                    systemStatus.style.background = 'var(--error-bg)';
+                    systemStatus.style.borderColor = 'var(--error-border)';
+                    systemStatus.style.color = '#991B1B';
+                }
             }
         }
 
-        // Jalankan pengecekan saat halaman dimuat
         cekWaktuOtomatis();
+
+        // ---- Motivational Quotes Rotation ----
+        const quotes = [
+            '"Setiap kehadiran Kamu adalah langkah kecil yang berarti besar bagi sesama."',
+            '"Kamu tidak perlu menjadi sempurna, cukup hadir dan peduli."',
+            '"Bersama kita bisa membuat perubahan yang nyata."',
+            '"Menjadi teman baik dimulai dari langkah kehadiran."',
+            '"Satu tindakan baik hari ini mengubah esok hari seseorang."'
+        ];
+        const motivEl = document.getElementById('motivational-text');
+        if (motivEl) {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            motivEl.textContent = quotes[randomIndex];
+        }
     </script>
 </body>
 
