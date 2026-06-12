@@ -332,7 +332,7 @@
             const waktuSekarang = new Date();
             const jam = waktuSekarang.getHours();
 
-            if (jam >= 22) {
+            if (jam >= 22 || jam < 8) {
                 const areaBuka = document.getElementById('area-buka');
                 const pesanTutup = document.getElementById('pesan-tutup');
                 const systemStatus = document.getElementById('system-status');
@@ -347,7 +347,7 @@
                 if (systemStatus) {
                     systemStatus.innerHTML = `
                         <span class="system-status__dot" style="background: var(--error); animation: none;"></span>
-                        <span>Portal absensi ditutup — Buka kembali besok</span>
+                        <span>Portal absensi ditutup - Buka kembali pukul 08:00 WIB</span>
                     `;
                     systemStatus.style.background = 'var(--error-bg)';
                     systemStatus.style.borderColor = 'var(--error-border)';
