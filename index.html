@@ -91,12 +91,13 @@
                     onerror="this.src='https://ui-avatars.com/api/?name=Aku+Temanmu&background=0284c7&color=fff'">
             </div>
 
-            <h1 class="mt-16text-xl font-bold text-sky-900 mb-2 text-center tracking-tight">Portal Absensi Relawan</h1>
+            <h1 class="mt-16 text-xl font-bold text-sky-900 mb-2 text-center tracking-tight">Portal Absensi Relawan</h1>
             <p class="text-slate-500 text-sm text-center mb-8 font-medium">
                 Silakan pilih formulir absensi sesuai dengan kegiatan Kamu hari ini.
             </p>
 
-            <div class="flex flex-col gap-4 w-full">
+            <!-- Area Buka: Menampilkan Tombol Form (Akan disembunyikan jam 22:00) -->
+            <div id="area-buka" class="flex flex-col gap-4 w-full">
 
                 <a href="https://forms.gle/XM74vcRs47K2Kxc78" target="_blank" rel="noopener noreferrer"
                     class="group flex items-center justify-between w-full p-4 bg-white hover:bg-sky-50 border-2 border-sky-100 hover:border-sky-300 rounded-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-md animate-fade-in delay-100 opacity-0 cursor-pointer">
@@ -145,6 +146,19 @@
 
             </div>
 
+            <!-- Area Tutup: Menampilkan Pesan Merah (Akan muncul jam 22:00) -->
+            <div id="pesan-tutup"
+                class="hidden flex-col items-center w-full p-6 bg-red-50 border-2 border-red-100 rounded-2xl animate-fade-in delay-100">
+                <div class="bg-red-100 text-red-500 p-3 rounded-full mb-3">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-red-800 mb-2 text-center">Pintu Absensi Ditutup</h3>
+                <p class="text-sm text-red-600 text-center font-medium leading-relaxed">
+                    Batas waktu pengisian kehadiran hari ini (22:00 WIB) telah habis. Portal akan dibuka kembali esok
+                    hari.
+                </p>
+            </div>
+
             <div
                 class="flex justify-center gap-5 mt-8 pt-6 border-t border-slate-100 w-full animate-fade-in delay-300 opacity-0">
                 <a href="#" class="text-sky-600/60 hover:text-sky-600 hover:scale-110 transition-all"
@@ -171,6 +185,29 @@
     <script>
         // Inisialisasi ikon dari Lucide
         lucide.createIcons();
+
+        // Fungsi Pintu Otomatis
+        function cekWaktuOtomatis() {
+            const waktuSekarang = new Date();
+            const jam = waktuSekarang.getHours();
+
+            // Logika: Jika jam 22 (10 malam) atau lebih
+            if (jam >= 22) {
+                const areaBuka = document.getElementById('area-buka');
+                const pesanTutup = document.getElementById('pesan-tutup');
+
+                // Sembunyikan daftar form
+                areaBuka.classList.remove('flex');
+                areaBuka.classList.add('hidden');
+
+                // Tampilkan pesan penutupan
+                pesanTutup.classList.remove('hidden');
+                pesanTutup.classList.add('flex');
+            }
+        }
+
+        // Jalankan pengecekan saat halaman dimuat
+        cekWaktuOtomatis();
     </script>
 </body>
 
