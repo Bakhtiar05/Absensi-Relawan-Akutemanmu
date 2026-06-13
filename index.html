@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Absensi Relawan Akutemanmu</title>
+    <title>Portal Absensi Relawan - Akutemanmu</title>
     <meta name="description"
         content="Portal absensi digital untuk relawan Akutemanmu. Isi kehadiran kegiatan offline, kunjungan rumah konseling, dan event online.">
     <link rel="icon" type="image/png" href="image/logoabsen.png">
@@ -101,55 +101,57 @@
             </div>
         </div>
 
-        <!-- ====== Attendance Menu ====== -->
+        <!-- ====== Absensi Section ====== -->
         <div class="section-label anim-fade-up anim-delay-4">
-            <span>Formulir Absensi</span>
+            <span>Absensi</span>
             <div class="section-label__line"></div>
         </div>
 
         <!-- Open state: attendance cards -->
         <div id="area-buka">
-            <a href="https://forms.gle/XM74vcRs47K2Kxc78" target="_blank" rel="noopener noreferrer"
-                class="attendance-card anim-fade-up anim-delay-4" id="card-offline">
-                <div class="attendance-card__icon attendance-card__icon--offline">
-                    <i data-lucide="users"></i>
-                </div>
-                <div class="attendance-card__content">
-                    <div class="attendance-card__title">Absensi Kegiatan/Event Offline</div>
-                    <div class="attendance-card__desc">Catat kehadiran untuk kegiatan tatap muka</div>
-                </div>
-                <div class="attendance-card__arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-            </a>
+            <div class="menu-grid anim-fade-up anim-delay-4">
+                <a href="https://forms.gle/XM74vcRs47K2Kxc78" target="_blank" rel="noopener noreferrer"
+                    class="attendance-card" id="card-offline">
+                    <div class="attendance-card__icon attendance-card__icon--offline">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="attendance-card__content">
+                        <div class="attendance-card__title">Absensi Kegiatan/Event Offline</div>
+                        <div class="attendance-card__desc">Catat kehadiran untuk kegiatan tatap muka</div>
+                    </div>
+                    <div class="attendance-card__arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </a>
 
-            <a href="https://forms.gle/8xpcvb2un62Ud8QPA" target="_blank" rel="noopener noreferrer"
-                class="attendance-card anim-fade-up anim-delay-5" id="card-konseling">
-                <div class="attendance-card__icon attendance-card__icon--konseling">
-                    <i data-lucide="home"></i>
-                </div>
-                <div class="attendance-card__content">
-                    <div class="attendance-card__title">Absensi Kunjungan Rumah Konseling</div>
-                    <div class="attendance-card__desc">Catat kehadiran kunjungan Rumah Konseling</div>
-                </div>
-                <div class="attendance-card__arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-            </a>
+                <a href="https://forms.gle/8xpcvb2un62Ud8QPA" target="_blank" rel="noopener noreferrer"
+                    class="attendance-card" id="card-konseling">
+                    <div class="attendance-card__icon attendance-card__icon--konseling">
+                        <i data-lucide="home"></i>
+                    </div>
+                    <div class="attendance-card__content">
+                        <div class="attendance-card__title">Absensi Kunjungan Rumah Konseling</div>
+                        <div class="attendance-card__desc">Catat kehadiran kunjungan Rumah Konseling</div>
+                    </div>
+                    <div class="attendance-card__arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </a>
 
-            <a href="https://forms.gle/APC8gKwt1A4RgfA6A" target="_blank" rel="noopener noreferrer"
-                class="attendance-card anim-fade-up anim-delay-6" id="card-online">
-                <div class="attendance-card__icon attendance-card__icon--online">
-                    <i data-lucide="video"></i>
-                </div>
-                <div class="attendance-card__content">
-                    <div class="attendance-card__title">Absensi Kegiatan/Event Online</div>
-                    <div class="attendance-card__desc">Catat kehadiran untuk kegiatan daring</div>
-                </div>
-                <div class="attendance-card__arrow">
-                    <i data-lucide="arrow-right"></i>
-                </div>
-            </a>
+                <a href="https://forms.gle/APC8gKwt1A4RgfA6A" target="_blank" rel="noopener noreferrer"
+                    class="attendance-card" id="card-online">
+                    <div class="attendance-card__icon attendance-card__icon--online">
+                        <i data-lucide="video"></i>
+                    </div>
+                    <div class="attendance-card__content">
+                        <div class="attendance-card__title">Absensi Kegiatan/Event Online</div>
+                        <div class="attendance-card__desc">Catat kehadiran untuk kegiatan daring</div>
+                    </div>
+                    <div class="attendance-card__arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <!-- Closed state -->
@@ -162,6 +164,56 @@
                 Batas waktu pengisian kehadiran hari ini (22:00 WIB) telah habis. Portal akan dibuka kembali pukul 08:00
                 WIB.
             </p>
+        </div>
+
+        <!-- ====== Rekapitulasi Section ====== -->
+        <div class="section-label anim-fade-up anim-delay-5">
+            <span>Rekapitulasi</span>
+            <div class="section-label__line"></div>
+        </div>
+
+        <div class="rekap-container anim-fade-up anim-delay-5">
+            <div class="rekap-container__header">
+                <span class="rekap-container__badge">
+                    <i data-lucide="activity"></i>
+                    Monitoring
+                </span>
+                <p class="rekap-container__subtitle">Pantau data kehadiran secara real-time</p>
+            </div>
+
+            <div class="menu-grid menu-grid--rekap">
+                <a href="https://docs.google.com/spreadsheets/d/1BXHmY99PZirXHm-BaWSaqRHapIHHXmIJ_RAJP9wZMzg/edit?usp=sharing"
+                    target="_blank" rel="noopener noreferrer" class="attendance-card attendance-card--rekap"
+                    id="card-rekap-konseling">
+                    <div class="attendance-card__icon attendance-card__icon--rekap-konseling">
+                        <i data-lucide="clipboard-list"></i>
+                    </div>
+                    <div class="attendance-card__content">
+                        <div class="attendance-card__title">Rekap Absensi Kunjungan Rumah Konseling</div>
+                        <div class="attendance-card__desc">Lihat dan pantau rekap kehadiran kunjungan rumah konseling.
+                        </div>
+                    </div>
+                    <div class="attendance-card__arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </a>
+
+                <a href="https://docs.google.com/spreadsheets/d/1H2qXGRO5qZ4QcZacXel8CFDP8o-12bW_dfGkd3C2rw8/edit?usp=sharing"
+                    target="_blank" rel="noopener noreferrer" class="attendance-card attendance-card--rekap"
+                    id="card-rekap-offline">
+                    <div class="attendance-card__icon attendance-card__icon--rekap-offline">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <div class="attendance-card__content">
+                        <div class="attendance-card__title">Rekap Absensi Kegiatan Offline</div>
+                        <div class="attendance-card__desc">Lihat dan pantau rekap kehadiran kegiatan atau event offline.
+                        </div>
+                    </div>
+                    <div class="attendance-card__arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <!-- ====== Announcement ====== -->
@@ -277,7 +329,7 @@
             <div class="footer__credit" style="font-size: 0.85rem; color: #9CA3AF; margin: 4px 0;">
                 Dibuat dengan 💙 oleh HR Manager 2026 - Bakhtiar Kamil
             </div>
-            <div class="footer__version">Versi 2.0.0</div>
+            <div class="footer__version">Versi 2.1.0</div>
         </footer>
 
     </div>

@@ -284,6 +284,13 @@ img {
   background: linear-gradient(90deg, rgba(148,163,184,0.3), transparent);
 }
 
+/* ---------- Menu Grid Layout ---------- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
 /* ---------- Attendance Cards ---------- */
 .attendance-card {
   display: flex;
@@ -326,10 +333,6 @@ img {
 
 .attendance-card:active {
   transform: translateY(-1px) scale(0.995);
-}
-
-.attendance-card + .attendance-card {
-  margin-top: 12px;
 }
 
 .attendance-card__icon {
@@ -419,6 +422,110 @@ img {
 .attendance-card:hover .attendance-card__arrow svg {
   color: #FFFFFF;
   transform: translateX(2px);
+}
+
+/* ---------- Rekapitulasi Container ---------- */
+.rekap-container {
+  background: linear-gradient(135deg, rgba(59, 167, 240, 0.04) 0%, rgba(167, 139, 250, 0.06) 100%);
+  border: 1px solid rgba(59, 167, 240, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.rekap-container::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(59, 167, 240, 0.08), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rekap-container::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.06), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rekap-container__header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rekap-container__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: linear-gradient(135deg, rgba(59, 167, 240, 0.12), rgba(110, 214, 255, 0.1));
+  border: 1px solid rgba(59, 167, 240, 0.18);
+  border-radius: var(--radius-full);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.rekap-container__badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.rekap-container__subtitle {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.menu-grid--rekap {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Rekap Card Icon Variants ---------- */
+.attendance-card__icon--rekap-konseling {
+  background: linear-gradient(135deg, #14B8A6, #0D9488);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.3);
+}
+
+.attendance-card__icon--rekap-offline {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+/* Rekap card subtle visual distinction */
+.attendance-card--rekap {
+  border-color: rgba(59, 167, 240, 0.06);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.attendance-card--rekap:hover {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* ---------- Stats Grid ---------- */
@@ -958,10 +1065,32 @@ img {
     margin: 0 -24px;
     border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .attendance-card {
+    min-height: 88px;
+  }
 }
 
 @media (min-width: 768px) {
   .app-container {
-    max-width: 520px;
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-container {
+    max-width: 920px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .menu-grid--rekap {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
