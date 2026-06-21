@@ -1237,3 +1237,86 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ---------- Dark Theme: Portal Closed Section Redesign ---------- */
+html.dark-theme .closed-card {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 48px;
+  gap: 24px;
+}
+
+html.dark-theme .closed-card.is-active {
+  display: flex;
+  animation: closedCardFadeIn 300ms ease-out forwards;
+}
+
+@keyframes closedCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html.dark-theme .closed-card__icon {
+  background: rgba(239, 68, 68, 0.15);
+  color: #F87171;
+  margin-bottom: 0;
+  animation: iconPulseSubtle 3s ease-in-out infinite;
+}
+
+@keyframes iconPulseSubtle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+html.dark-theme .closed-card__title {
+  color: #F9FAFB;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 0;
+}
+
+html.dark-theme .closed-card__text {
+  color: #9CA3AF;
+  line-height: 1.7;
+}
+
+.highlight-time {
+  font-weight: 600;
+}
+
+html.dark-theme .highlight-time {
+  color: #F87171;
+}
+
+/* Override JS inline styles for Alert Banner in Dark Mode */
+html.dark-theme #system-status[style*="--error-bg"] {
+  background: rgba(127, 29, 29, 0.18) !important;
+  border: 1px solid rgba(239, 68, 68, 0.25) !important;
+  color: #FCA5A5 !important;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.10) !important;
+}
+
+html.dark-theme #system-status[style*="--error-bg"] .system-status__dot {
+  background: #EF4444 !important;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4) !important;
+}
+
+@media (max-width: 480px) {
+  html.dark-theme .closed-card {
+    padding: 32px 20px;
+    gap: 16px;
+  }
+  html.dark-theme .closed-card__title {
+    font-size: 24px;
+  }
+}
