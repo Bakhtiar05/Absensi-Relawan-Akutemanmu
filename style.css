@@ -38,6 +38,219 @@
   --transition-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* ---------- Dark Theme Properties ---------- */
+html.dark-theme {
+  --bg-start: #0B1220;
+  --bg-end: #111827;
+  --card-bg: #1F2937;
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.2);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.6);
+  --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.4);
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --success-border: rgba(16, 185, 129, 0.2);
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --error-border: rgba(239, 68, 68, 0.2);
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --primary: #3B82F6;
+  --primary-dark: #2563EB;
+  --secondary: #22D3EE;
+  --accent: #F59E0B;
+}
+
+html.dark-theme .bg-shape {
+  opacity: 0.1;
+}
+
+html.dark-theme .hero {
+  background: linear-gradient(135deg, #111827 0%, #0B1220 100%);
+}
+html.dark-theme .hero::after {
+  background: linear-gradient(to top, #0B1220, transparent);
+}
+html.dark-theme .hero__glass {
+  background: rgba(31, 41, 55, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Premium Dark Cards */
+html.dark-theme .attendance-card,
+html.dark-theme .stat-card,
+html.dark-theme .announcement-card,
+html.dark-theme .contact-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+}
+
+html.dark-theme .attendance-card:hover,
+html.dark-theme .stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+html.dark-theme .attendance-card::before {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), transparent 60%);
+}
+
+/* Glass effect refinements */
+html.dark-theme .attendance-card--rekap {
+  background: rgba(31, 41, 55, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+html.dark-theme .attendance-card--rekap:hover {
+  background: rgba(31, 41, 55, 0.95);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+html.dark-theme .rekap-container {
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+html.dark-theme .rekap-container::before,
+html.dark-theme .rekap-container::after {
+  opacity: 0.2;
+}
+html.dark-theme .rekap-container__badge {
+  background: rgba(31, 41, 55, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #F9FAFB;
+}
+
+/* Footer redesign */
+html.dark-theme .footer {
+  background: linear-gradient(180deg, #111827 0%, #0B1220 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+html.dark-theme .social-pill {
+  background: rgba(31, 41, 55, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+html.dark-theme .social-pill:hover {
+  background: rgba(55, 65, 81, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  color: #F9FAFB;
+}
+
+/* Primary Button Redesign */
+html.dark-theme .help-btn {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+html.dark-theme .help-btn::before {
+  display: none;
+}
+html.dark-theme .help-btn:hover {
+  background: rgba(31, 41, 55, 0.9);
+  border-color: var(--accent);
+  box-shadow: 0 14px 40px rgba(245, 158, 11, 0.2);
+  transform: translateY(-4px);
+}
+html.dark-theme .help-btn:hover svg, 
+html.dark-theme .help-btn:hover i {
+  color: var(--accent);
+  transform: scale(1.1);
+  transition: transform 250ms ease;
+}
+
+/* Brighter Icons */
+html.dark-theme .attendance-card__icon--offline {
+  background: linear-gradient(135deg, #60A5FA, #3B82F6);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+html.dark-theme .attendance-card__icon--konseling {
+  background: linear-gradient(135deg, #34D399, #10B981);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+html.dark-theme .attendance-card__icon--online {
+  background: linear-gradient(135deg, #C084FC, #8B5CF6);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+html.dark-theme .attendance-card__icon--rekap-konseling {
+  background: linear-gradient(135deg, #2DD4BF, #14B8A6);
+  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.3);
+}
+html.dark-theme .attendance-card__icon--rekap-offline {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+html.dark-theme .system-status {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #34D399;
+}
+html.dark-theme .system-status__dot {
+  background: #34D399;
+}
+
+/* ---------- Theme Toggle Button ---------- */
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: var(--transition-base);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+html.dark-theme .theme-toggle #theme-icon-light {
+  display: none !important;
+}
+
+html.dark-theme .theme-toggle #theme-icon-dark {
+  display: block !important;
+}
+
+html:not(.dark-theme) .theme-toggle #theme-icon-light {
+  display: block !important;
+}
+
+html:not(.dark-theme) .theme-toggle #theme-icon-dark {
+  display: none !important;
+}
+
 /* ---------- Reset & Base ---------- */
 *, *::before, *::after {
   margin: 0;

@@ -24,6 +24,14 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Theme Initialization -->
+    <script>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-theme');
+        }
+    </script>
 </head>
 
 <body>
@@ -40,6 +48,12 @@
 
         <!-- ====== Hero Header ====== -->
         <header class="hero anim-fade anim-delay-1" id="hero-header">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i data-lucide="moon" id="theme-icon-light"></i>
+                <i data-lucide="sun" id="theme-icon-dark" style="display: none;"></i>
+            </button>
+
             <!-- Decorative shapes -->
             <div class="hero__shape hero__shape--1" aria-hidden="true"></div>
             <div class="hero__shape hero__shape--2" aria-hidden="true"></div>
@@ -406,6 +420,7 @@
 
         cekWaktuOtomatis();
 
+
         // ---- Motivational Quotes Rotation ----
         const quotes = [
             '"Setiap kehadiran Kamu adalah langkah kecil yang berarti besar bagi sesama."',
@@ -418,6 +433,15 @@
         if (motivEl) {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             motivEl.textContent = quotes[randomIndex];
+        }
+
+        // ---- Theme Toggle ----
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark-theme');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
         }
     </script>
 </body>
